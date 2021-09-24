@@ -1,5 +1,8 @@
 require "bundler/setup"
+require 'mongoid'
 require "mongoid/bulk/import"
+require "mongoid/persistable/creatable"
+require "mongoid/support/user"
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure
@@ -11,4 +14,14 @@ RSpec.configure do |config|
   config.expect_with :rspec do |c|
     c.syntax = :expect
   end
+
+  config.expose_dsl_globally = true
+
+  config.after(:all) do
+    Mongoid::Clients.default.database.drop
+  end
+end
+
+Mongoid.configure do |config|
+  config.connect_to 'mongoid-bulk-insert'
 end
