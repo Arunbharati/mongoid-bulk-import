@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    mongoid-bulk-import (0.1.0)
+    mongoid-bulk-import (0.2.0)
       mongoid (>= 7.0)
 
 GEM
