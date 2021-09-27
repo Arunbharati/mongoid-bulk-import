@@ -2,7 +2,7 @@ RSpec.describe Mongoid::Bulk::Import do
   it "has a version number" do
     expect(Mongoid::Bulk::Import::VERSION).not_to be nil
   end
-  
+
   describe ".bulk_insert" do
     context "with Validation" do
       context "when provided an array of attributes" do

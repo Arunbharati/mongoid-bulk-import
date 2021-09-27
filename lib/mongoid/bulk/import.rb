@@ -3,12 +3,12 @@ require 'mongoid'
 
 module Mongoid
   module Bulk
-    module Import			
-			extend ActiveSupport::Concern
+    module Import
+      extend ActiveSupport::Concern
       Result = Struct.new(:failed_instances, :num_inserts, :ids)
-			
-			def bulk_insert(attributes = nil, options = {}, &block)
-	      _creating do
+
+      def bulk_insert(attributes = nil, options = {}, &block)
+        _creating do
           if attributes.is_a?(::Array)
             documents = attributes.map { |attrs| bulk_insert_obj(attrs, options, &block) }
           else
@@ -23,9 +23,9 @@ module Mongoid
       def bulk_insert_obj(attributes = nil, options = {}, &block)
         doc = new(attributes, &block)
         doc.valid? if (options[:validate].nil? ? true : options[:validate])
-        doc 
+        doc
       end
-	  end
+    end
   end
 end
 Mongoid::Document::ClassMethods.send(:include, Mongoid::Bulk::Import)
