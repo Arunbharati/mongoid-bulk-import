@@ -18,7 +18,7 @@ RSpec.configure do |config|
   config.expose_dsl_globally = true
 
   config.after(:all) do
-    Mongoid::Clients.default.database.drop
+    Mongoid.purge!
   end
 end
 
