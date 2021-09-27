@@ -1,7 +1,6 @@
 require "bundler/setup"
 require 'mongoid'
 require "mongoid/bulk/import"
-require "mongoid/persistable/creatable"
 require "mongoid/support/user"
 
 RSpec.configure do |config|
