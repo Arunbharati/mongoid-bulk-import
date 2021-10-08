@@ -21,7 +21,7 @@ module Mongoid
       end
 
       def bulk_insert_obj(attributes = nil, options = {}, &block)
-        doc = new(attributes, &block)
+        doc = attributes.kind_of?(Mongoid::Document) ? attributes : new(attributes, &block)
         doc.valid? if (options[:validate].nil? ? true : options[:validate])
         doc
       end
